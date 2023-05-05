@@ -1,4 +1,4 @@
 # kustomization.yml
 resources:
-- https://github.com/kubevirt/containerized-data-importer/releases/download/v1.55.2/cdi-operator.yaml
-- https://github.com/kubevirt/containerized-data-importer/releases/download/v1.55.2/cdi-cr.yaml
+- https://github.com/kubevirt/containerized-data-importer/releases/download/v1.56.0/cdi-operator.yaml
+- https://github.com/kubevirt/containerized-data-importer/releases/download/v1.56.0/cdi-cr.yaml
