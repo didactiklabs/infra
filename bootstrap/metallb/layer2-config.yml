@@ -1,17 +1,17 @@
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
 metadata:
-  name: aam-prod
+  name: general-lb
   namespace: metallb-system
 spec:
   ipAddressPools:
-  - aam-prod
+  - general-lb
 ---
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: aam-prod
+  name: general-lb
   namespace: metallb-system
 spec:
   addresses:
-  - 192.168.1.100-192.168.1.109
+  - 192.168.1.100-192.168.1.199

@@ -1,0 +1,52 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: ovn-router
+  namespace: aamoyel
+spec:
+  running: true
+  template:
+    spec:
+      terminationGracePeriodSeconds: 0
+      domain:
+        cpu:
+          cores: 1
+        devices:
+          interfaces:
+          - name: default
+            bridge: {}
+          disks:
+          - name: data
+            disk:
+              bus: virtio
+          - name: cloudinitdisk
+            disk:
+              bus: virtio
+        memory:
+          guest: 1Gi
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: data
+        dataVolume:
+          name: ovn-router-data
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userData: |-
+            #cloud-config for temporary password
+            password: ubuntu
+            chpasswd: { expire: False }
+  dataVolumeTemplates:
+  - metadata:
+      name: ovn-router-data
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 12G
+      source:
+        registry:
+          url: "docker://tedezed/ubuntu-container-disk:22.0"
