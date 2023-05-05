@@ -1,0 +1,59 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: vrising
+  namespace: aamoyel
+  labels:
+    kubevirt.io/vm: vrising
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: vrising
+      annotations:
+        ovn.kubernetes.io/ip_pool: 172.16.0.200
+    spec:
+      terminationGracePeriodSeconds: 0
+      domain:
+        cpu:
+          cores: 4
+        devices:
+          interfaces:
+          - name: default
+            bridge: {}
+          disks:
+          - name: data
+            disk:
+              bus: virtio
+          - name: cloudinitdisk
+            disk:
+              bus: virtio
+        memory:
+          guest: 6Gi
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: data
+        dataVolume:
+          name: vrising-data
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userData: |-
+            #cloud-config for temporary password
+            password: ubuntu
+            chpasswd: { expire: False }
+  dataVolumeTemplates:
+  - metadata:
+      name: vrising-data
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 60G
+      source:
+        registry:
+          url: "docker://tedezed/ubuntu-container-disk:22.0"

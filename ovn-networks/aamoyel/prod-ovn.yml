@@ -1,0 +1,31 @@
+kind: Subnet
+apiVersion: kubeovn.io/v1
+metadata:
+  name: aam-prod 
+spec:
+  namespaces:
+    - aamoyel
+  protocol: IPv4
+  cidrBlock: 172.16.0.0/24
+  excludeIps:
+  - 172.16.0.1
+  gateway: 172.16.0.1
+  gatewayType: distributed
+  natOutgoing: true
+  disableGatewayCheck: true
+  acls:
+  # Drop unauthorized packets
+  - action: drop
+    direction: to-lport
+    match: ip4.dst == 172.16.0.0/24
+    priority: 1000
+  # Allow related packets from many networks
+  - action: allow-related
+    direction: from-lport
+    match: ip4.src == 172.16.0.0/24 || ip4.src == 192.168.1.0/24 || ip4.src == 10.16.0.0/16 || ip4.src == 100.64.0.0/16
+    priority: 1000
+  # Allow incoming requests from this ovn subnet, LAN subnet, default pod network and join subnet connections
+  - action: allow
+    direction: to-lport
+    match: ip4.src == 172.16.0.0/24 || ip4.src == 192.168.1.0/24 || ip4.src == 10.16.0.0/16 || ip4.src == 100.64.0.0/16
+    priority: 2000
