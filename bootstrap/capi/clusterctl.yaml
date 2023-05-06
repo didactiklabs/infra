@@ -1,9 +1,0 @@
-# Features Vars
-CLUSTER_TOPOLOGY: "true"
-EXP_CLUSTER_RESOURCE_SET: "true"
-
-# Providers
-providers:
-  - name: "kubevirt"
-    url: "https://github.com/kubernetes-sigs/cluster-api-provider-kubevirt/releases/v0.1.4/infrastructure-components.yaml"
-    type: "InfrastructureProvider"
