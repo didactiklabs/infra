@@ -1,0 +1,57 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cert-manager
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: ./bootstrap/capi/cert-manager
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: infra
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: cert-manager
+      namespace: cert-manager
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cluster-api-operator
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: ./bootstrap/capi/operator
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: infra
+  dependsOn:
+    - name: cert-manager
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: capi-operator-controller-manager
+      namespace: capi-operator-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cluster-api
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: ./bootstrap/capi
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: infra
+  dependsOn:
+    - name: cluster-api-operator
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: capk-controller-manager
+      namespace: capk-system

@@ -68,6 +68,14 @@ kubectl apply -f https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-c
 kubectl kustomize longhorn | kubectl apply -f -
 ```
 
+## Flucd (GitOps)
+Deploy fluxcd and gitops resources in the cluster
+```bash
+kubectl apply -f fluxcd/gotk-components.yaml
+kubectl apply -f fluxcd/gotk-sync.yaml
+kubectl apply -f fluxcd/apps-sync.yaml
+```
+
 ## MetalLB
 ```bash
 kubectl kustomize metallb | kubectl apply -f -
@@ -86,6 +94,3 @@ If you get an error (due to CRD), juste re run the previous command
 kubectl kustomize cdi | kubectl apply -f -
 ```
 If you get an error (due to CRD), juste re run the previous command
-
-## CAPI (Cluster API)
-TODO
