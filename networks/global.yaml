@@ -1,0 +1,15 @@
+kind: Subnet
+apiVersion: kubeovn.io/v1
+metadata:
+  name: global-services
+spec:
+  namespaces:
+    - glb-services
+  protocol: IPv4
+  cidrBlock: 172.16.254.0/24
+  excludeIps:
+  - 172.16.254.1
+  - 172.16.254.254
+  gateway: 172.16.254.254
+  gatewayType: distributed
+  natOutgoing: true
