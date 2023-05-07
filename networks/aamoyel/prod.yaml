@@ -23,10 +23,10 @@ spec:
   # Allow related packets from many networks
   - action: allow-related
     direction: from-lport
-    match: ip4.src == 172.16.0.0/24 || ip4.src == 192.168.1.0/24 || ip4.src == 10.16.0.0/16 || ip4.src == 100.64.0.0/16
+    match: ip4.src == 172.16.0.0/24 || ip4.src == 10.254.254.0/24 || ip4.src == 10.16.0.0/16 || ip4.src == 100.64.0.0/16
     priority: 1000
   # Allow incoming requests from this ovn subnet, LAN subnet, default pod network and join subnet connections
   - action: allow
     direction: to-lport
-    match: ip4.src == 172.16.0.0/24 || ip4.src == 192.168.1.0/24 || ip4.src == 10.16.0.0/16 || ip4.src == 100.64.0.0/16
+    match: ip4.src == 172.16.0.0/24 || ip4.src == 10.254.254.0/24 || ip4.src == 10.16.0.0/16 || ip4.src == 100.64.0.0/16
     priority: 2000

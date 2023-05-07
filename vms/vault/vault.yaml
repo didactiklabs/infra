@@ -1,0 +1,55 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: vault
+  namespace: glb-services
+spec:
+  running: true
+  template:
+    metadata:
+      annotations:
+        ovn.kubernetes.io/ip_pool: 172.16.254.2
+    spec:
+      terminationGracePeriodSeconds: 0
+      domain:
+        cpu:
+          cores: 2
+        devices:
+          interfaces:
+          - name: default
+            bridge: {}
+          disks:
+          - name: data
+            disk:
+              bus: virtio
+          - name: cloudinitdisk
+            disk:
+              bus: virtio
+        memory:
+          guest: 4Gi
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: data
+        dataVolume:
+          name: vault-data
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userData: |-
+            #cloud-config for temporary password
+            password: ubuntu
+            chpasswd: { expire: False }
+  dataVolumeTemplates:
+  - metadata:
+      name: vault-data
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 20G
+      source:
+        registry:
+          url: "docker://tedezed/ubuntu-container-disk:22.0"
