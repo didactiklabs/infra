@@ -3,3 +3,4 @@ resources:
 - metallb.yaml
 - kubevirt.yaml
 - cdi.yaml
+- golinks.yaml
