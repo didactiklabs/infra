@@ -75,22 +75,3 @@ kubectl apply -f fluxcd/gotk-components.yaml
 kubectl apply -f fluxcd/gotk-sync.yaml
 kubectl apply -f fluxcd/apps-sync.yaml
 ```
-
-## MetalLB
-```bash
-kubectl kustomize metallb | kubectl apply -f -
-```
-
-If you have errors like `no matches for kind "IPAddressPool" in version ...` or `Internal error occurred: failed calling webhook ...` ensure pods are running in metallb-system namespace and re run the previous command.
-
-## Kubevirt
-```bash
-kubectl kustomize kubevirt | kubectl apply -f -
-```
-If you get an error (due to CRD), juste re run the previous command
-
-## CDI (Containerized Data Importer)
-```bash
-kubectl kustomize cdi | kubectl apply -f -
-```
-If you get an error (due to CRD), juste re run the previous command
