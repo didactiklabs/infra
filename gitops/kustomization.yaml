@@ -1,2 +1,5 @@
 resources:
 - cluster-api.yaml
+- metallb.yaml
+- kubevirt.yaml
+- cdi.yaml
