@@ -20,11 +20,6 @@ spec:
     direction: to-lport
     match: ip4.dst == 172.16.0.0/24
     priority: 1000
-  # Drop packet to pod network
-  - action: drop
-    direction: from-lport
-    match: ip4.dst == 10.16.0.0/16
-    priority: 1000
   # Allow related packets from many networks
   - action: allow-related
     direction: from-lport
