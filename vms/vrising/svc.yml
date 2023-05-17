@@ -3,12 +3,10 @@ kind: Service
 metadata:
   name: vrising
   namespace: aamoyel
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: "10.254.254.199"
 spec:
   ports:
-  - name: ssh
-    port: 22
-    targetPort: 22
-    protocol: TCP
   - name: game
     port: 9876
     targetPort: 9876
@@ -21,4 +19,4 @@ spec:
     protocol: UDP
   selector:
     kubevirt.io/vm: vrising
-  type: NodePort
+  type: LoadBalancer
