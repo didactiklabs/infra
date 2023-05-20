@@ -1,0 +1,7 @@
+- op: replace
+  path: "/spec/type"
+  value: LoadBalancer
+
+- op: add
+  path: "/spec/loadBalancerIP"
+  value: "10.254.254.101"
