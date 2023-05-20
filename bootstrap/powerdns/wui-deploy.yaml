@@ -21,9 +21,9 @@ spec:
           containerPort: 80
         env:
         - name: GUNICORN_TIMEOUT
-          value: 60
+          value: '60'
         - name: GUNICORN_WORKERS
-          value: 2
+          value: '2'
         - name: SQLALCHEMY_DATABASE_URI
           valueFrom:
             secretKeyRef:

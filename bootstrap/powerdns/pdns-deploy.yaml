@@ -24,9 +24,9 @@ spec:
           protocol: UDP
         env:
         - name: PDNS_gmysql_host
-          value: "pdns-db"
+          value: 'pdns-db'
         - name: PDNS_gmysql_port
-          value: 3306
+          value: '3306'
         - name: PDNS_gmysql_user
           valueFrom:
             secretKeyRef:
