@@ -5,6 +5,7 @@ metadata:
   namespace: glb-services
   annotations:
     metallb.universe.tf/loadBalancerIPs: "10.254.254.100"
+    external-dns.alpha.kubernetes.io/hostname: 'vault.didactiklabs.corp'
 spec:
   type: LoadBalancer
   ports:

@@ -8,3 +8,4 @@ resources:
 - secret-operator.yaml
 - ingress-controller.yaml
 - powerdns.yaml
+- external-dns.yaml
