@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdns-wui
+  labels:
+    app: pdns-wui
+spec:
+  selector:
+    matchLabels:
+      app: pdns-wui
+  template:
+    metadata:
+      labels:
+        app: pdns-wui
+    spec:
+      containers:
+      - image: ngoduykhanh/powerdns-admin:v0.3.0
+        name: powerdns-admin
+        ports:
+        - name: http
+          containerPort: 80
+        env:
+        - name: GUNICORN_TIMEOUT
+          value: 60
+        - name: GUNICORN_WORKERS
+          value: 2
+        - name: SQLALCHEMY_DATABASE_URI
+          valueFrom:
+            secretKeyRef:
+              name: pdns-mariadb
+              key: database_uri
