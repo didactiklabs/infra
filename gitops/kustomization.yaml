@@ -6,3 +6,4 @@ resources:
 - golinks.yaml
 - unsealer.yaml
 - secret-operator.yaml
+- ingress-controller.yaml
