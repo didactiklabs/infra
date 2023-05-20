@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pdns-db
+  name: powerdns-db
 spec:
   selector:
     app: pdns-mariadb
