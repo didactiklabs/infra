@@ -4,3 +4,4 @@ resources:
 - kubevirt.yaml
 - cdi.yaml
 - golinks.yaml
+- unsealer.yaml
