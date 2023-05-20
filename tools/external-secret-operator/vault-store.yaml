@@ -1,0 +1,23 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ClusterSecretStore
+metadata:
+  name: vault-backend
+spec:
+  provider:
+    vault:
+      server: "https://10.254.254.100"
+      path: "infra"
+      version: "v2"
+      caProvider:
+        type: Secret
+        name: didactiklabs-ca
+        namespace: vault-unsealer-operator-system
+        key: ca.crt
+      auth:
+        appRole:
+          path: "approle"
+          roleId: "e243a811-d20c-888c-29af-8256a3cc7613"
+          secretRef:
+            name: "vault-sid"
+            namespace: "external-secrets"
+            key: "secret-id"

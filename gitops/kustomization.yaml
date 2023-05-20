@@ -5,3 +5,4 @@ resources:
 - cdi.yaml
 - golinks.yaml
 - unsealer.yaml
+- secret-operator.yaml
