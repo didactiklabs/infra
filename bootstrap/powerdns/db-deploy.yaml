@@ -59,7 +59,10 @@ spec:
     template:
       engineVersion: v2
       data:
-        database_uri: "mysql://{{ .user }}:{{ .password}}@pdns-db/{{ .database}}"
+        database_uri: "mysql://{{ .user }}:{{ .password }}@pdns-db/{{ .database }}"
+        database: "{{ .database }}"
+        user: "{{ .user }}"
+        password: "{{ .password }}"
   data:
   - secretKey: database
     remoteRef:
