@@ -7,3 +7,4 @@ resources:
 - unsealer.yaml
 - secret-operator.yaml
 - ingress-controller.yaml
+- powerdns.yaml
