@@ -5,7 +5,7 @@
    namespace: vault-unsealer-operator-system
  spec:
    vaultNodes:
-     - https://vault.didactiklabs.corp
+     - https://10.254.254.100
    thresholdKeysSecret: thresholdkeys
-   caCertSecret: cacertificate
+   caCertSecret: didactiklabs-ca
    retryCount: 3
