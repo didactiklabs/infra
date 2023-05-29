@@ -34,7 +34,7 @@ metadata:
   name: cluster-api
   namespace: capi-system
 spec:
-  version: v1.3.3
+  version: v1.4.2
   secretName: capi-vars
 ---
 apiVersion: operator.cluster.x-k8s.io/v1alpha1
@@ -43,7 +43,7 @@ metadata:
  name: kubeadm
  namespace: capi-kubeadm-control-plane-system
 spec:
-  version: v1.3.3
+  version: v1.4.2
 ---
 apiVersion: operator.cluster.x-k8s.io/v1alpha1
 kind: BootstrapProvider
@@ -51,7 +51,7 @@ metadata:
  name: kubeadm
  namespace: capi-kubeadm-bootstrap-system
 spec:
-  version: v1.3.3
+  version: v1.4.2
 ---
 apiVersion: operator.cluster.x-k8s.io/v1alpha1
 kind: InfrastructureProvider
@@ -59,13 +59,13 @@ metadata:
  name: capk
  namespace: capk-system
 spec:
-  version: v0.1.4
+  version: v0.1.7
   fetchConfig:
-    url: "https://github.com/kubernetes-sigs/cluster-api-provider-kubevirt/releases/v0.1.4/infrastructure-components.yaml"
+    url: "https://github.com/kubernetes-sigs/cluster-api-provider-kubevirt/releases/v0.1.7/infrastructure-components.yaml"
   deployment:
     containers:
     - name: manager
       image:
         repository: docker.io/aamoyel
-        name: capi-kubevirt-provider
-        tag: latest
+        name: capk-manager
+        tag: v0.1.7
