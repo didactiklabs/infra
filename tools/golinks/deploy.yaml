@@ -21,6 +21,7 @@ spec:
       containers:
       - image: ghcr.io/tailscale/golink:main
         name: golink
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         env:
