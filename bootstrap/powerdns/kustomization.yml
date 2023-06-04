@@ -8,3 +8,4 @@ resources:
 - wui-deploy.yaml
 - wui-ing.yaml
 - wui-svc.yaml
+- coredns-config.yaml
