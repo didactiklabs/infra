@@ -75,3 +75,9 @@ kubectl apply -f fluxcd/gotk-components.yaml
 kubectl apply -f fluxcd/gotk-sync.yaml
 kubectl apply -f fluxcd/apps-sync.yaml
 ```
+
+## Internal Domain
+```bash
+kubectl apply -f powerdns/coredns-config.yaml
+```
+
