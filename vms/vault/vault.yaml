@@ -45,11 +45,13 @@ spec:
       name: vault-data
     spec:
       pvc:
+        volumeMode: Block
         accessModes:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 20G
+            storage: 12G
       source:
-        registry:
-          url: "docker://tedezed/ubuntu-container-disk:22.0"
+        pvc:
+          namespace: default
+          name: ubuntu2210
