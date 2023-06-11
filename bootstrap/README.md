@@ -1,6 +1,14 @@
 # Bootstraping Manual
 
 ## Cluster init
+You need to configure containerd to enable correct device ownership to use block volumes. Set this value in /etc/containerd/config.toml :
+```toml
+[plugins]
+  [plugins."io.containerd.grpc.v1.cri"]
+    device_ownership_from_security_context = true
+```
+
+Now, configure the control plane:
 ```bash
 # kubeadm config file path = ./kubernetes/config.yaml
 # You need to copy the file on the remote control-plane
