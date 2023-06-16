@@ -1,2 +1,5 @@
 resources:
 - https://raw.githubusercontent.com/longhorn/longhorn/v1.4.1/deploy/longhorn.yaml
+
+patches:
+- path: storageclass-cm.yaml
