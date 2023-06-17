@@ -30,12 +30,12 @@ spec:
       outposts:
         container_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
       postgresql:
-        host: '{{ .Release.Name }}-postgresql'
+        host: 'authentik-postgres'
         name: postgres
         port: 5432
         user: authentik
       redis:
-        host: '{{ .Release.Name }}-redis-master'
+        host: 'authentik-redis-master'
     blueprints: []
     env:
       AUTHENTIK_IMPERSONATION: false
