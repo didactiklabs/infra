@@ -3,6 +3,6 @@
   value: LoadBalancer
 
 - op: add
-  path: "/spec/annotations"
+  path: "/metadata/annotations"
   value:
     metallb.universe.tf/loadBalancerIPs: "10.254.254.101"
