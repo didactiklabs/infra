@@ -9,3 +9,4 @@ resources:
 - ingress-controller.yaml
 - powerdns.yaml
 - external-dns.yaml
+- kubevirt-manager.yaml
