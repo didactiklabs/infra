@@ -1,0 +1,6 @@
+namespace: glb-services
+resources:
+- db-pvc.yaml
+- db-deploy.yaml
+- db-svc.yaml
+- authentik-secrets.yaml

@@ -6,6 +6,7 @@ resources:
 - golinks.yaml
 - unsealer.yaml
 - secret-operator.yaml
+- authentik.yaml
 - ingress-controller.yaml
 - powerdns.yaml
 - external-dns.yaml
