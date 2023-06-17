@@ -108,7 +108,7 @@ metadata:
   name: authentik-deps
   namespace: flux-system
 spec:
-  interval: 1h0m0s
+  interval: 1m
   path: ./tools/authentik
   prune: false
   sourceRef:

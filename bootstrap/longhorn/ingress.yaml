@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+  annotations:
+    cert-manager.io/cluster-issuer: vault
+    nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
+    nginx.ingress.kubernetes.io/auth-signin: https://longhorn.didactiklabs.corp/outpost.goauthentik.io/start?rd=$escaped_request_uri
+    nginx.ingress.kubernetes.io/auth-snippet: |
+      proxy_set_header X-Forwarded-Host $http_host;
+    nginx.ingress.kubernetes.io/auth-url: http://glb-services-authentik.glb-services.svc.cluster.local/outpost.goauthentik.io/auth/nginx
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "longhorn.didactiklabs.corp"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: longhorn-frontend
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - "longhorn.didactiklabs.corp"
+    secretName: longhorn-tls

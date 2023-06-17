@@ -15,3 +15,13 @@ spec:
             name: glb-services-authentik
             port:
               number: 80
+  - host: "longhorn.didactiklabs.corp"
+    http:
+      paths:
+      - path: /outpost.goauthentik.io
+        pathType: Prefix
+        backend:
+          service:
+            name: glb-services-authentik
+            port:
+              number: 80
