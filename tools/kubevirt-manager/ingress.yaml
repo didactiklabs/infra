@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubevirt-manager
+  annotations:
+    cert-manager.io/cluster-issuer: vault
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "virt.didactiklabs.corp"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kubevirt-manager
+            port:
+              number: 8080
+  tls:
+  - hosts:
+    - "virt.didactiklabs.corp"
+    secretName: kubevirt-manager-tls

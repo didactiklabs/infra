@@ -1,0 +1,4 @@
+namespace: kubevirt-manager
+resources:
+- https://raw.githubusercontent.com/kubevirt-manager/kubevirt-manager/main/kubernetes/bundled.yaml
+- ingress.yaml
