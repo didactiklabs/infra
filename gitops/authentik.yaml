@@ -94,8 +94,8 @@ spec:
         persistence:
           enabled: false
     serviceAccount:
-      automountServiceAccountToken: false
-      create: false
+      automountServiceAccountToken: true
+      create: true
     prometheus:
       serviceMonitor:
         create: false
