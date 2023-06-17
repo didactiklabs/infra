@@ -35,7 +35,7 @@ spec:
         port: 5432
         user: authentik
       redis:
-        host: '{{ .Release.Namespace }}-{{ .Release.Name }}-redis-master'
+        host: '{{ .Release.Name }}-redis-master'
     blueprints: []
     env:
       AUTHENTIK_IMPERSONATION: false
