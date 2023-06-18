@@ -1,14 +1,14 @@
 apiVersion: cdi.kubevirt.io/v1beta1
 kind: DataVolume
 metadata:
-  name: ubuntu2210
+  name: kube127-ubuntu2210
   namespace: default
   annotations:
     cdi.kubevirt.io/storage.bind.immediate.requested: ''
 spec:
   source:
-    http:
-      url: "https://cloud-images.ubuntu.com/releases/22.10/release/ubuntu-22.10-server-cloudimg-amd64.img"
+    registry:
+      url: "docker://barthv/cloud-ubuntu-2204:v1.27.2"
   pvc:
     volumeMode: Block
     accessModes:
