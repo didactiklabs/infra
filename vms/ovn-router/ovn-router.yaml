@@ -4,7 +4,7 @@ metadata:
   name: ovn-router
   namespace: aamoyel
 spec:
-  running: true
+  runStrategy: Always
   template:
     spec:
       terminationGracePeriodSeconds: 0

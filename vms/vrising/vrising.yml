@@ -6,7 +6,7 @@ metadata:
   labels:
     kubevirt.io/vm: vrising
 spec:
-  running: true
+  runStrategy: Always
   template:
     metadata:
       labels:
