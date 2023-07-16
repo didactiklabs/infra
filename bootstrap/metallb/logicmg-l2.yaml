@@ -1,17 +1,20 @@
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
 metadata:
-  name: general-lb
+  name: logicmg-lb
   namespace: metallb-system
 spec:
   ipAddressPools:
-  - general-lb
+  - logicmg-lb
+  nodeSelectors:
+  - matchLabels:
+      entity: logicmg
 ---
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: general-lb
+  name: logicmg-lb
   namespace: metallb-system
 spec:
   addresses:
-  - 10.254.254.100-10.254.254.199
+  - 192.168.253.150-192.168.253.199
