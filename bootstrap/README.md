@@ -24,7 +24,7 @@ kubeadm init --config FILE
 
 2. Setup cilium cni-configuration
 ```bash
-# On all control-plane hosts
+# On all nodes
 cat <<EOF > /etc/cni/net.d/05-cilium.conflist
 {
   "name": "generic-veth",
