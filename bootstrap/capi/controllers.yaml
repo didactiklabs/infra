@@ -37,6 +37,16 @@ spec:
   version: v1.4.2
   secretName: capi-vars
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: capi-vars
+  namespace: capi-kubeadm-control-plane-system
+type: Opaque
+stringData:
+  CLUSTER_TOPOLOGY: "true"
+  EXP_CLUSTER_RESOURCE_SET: "true"
+---
 apiVersion: operator.cluster.x-k8s.io/v1alpha1
 kind: ControlPlaneProvider
 metadata:
@@ -44,6 +54,7 @@ metadata:
  namespace: capi-kubeadm-control-plane-system
 spec:
   version: v1.4.2
+  secretName: capi-vars
 ---
 apiVersion: operator.cluster.x-k8s.io/v1alpha1
 kind: BootstrapProvider
