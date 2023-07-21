@@ -78,5 +78,5 @@ spec:
     - name: manager
       image:
         repository: docker.io/aamoyel
-        name: capk-manager
+        name: capk-manager-amd64
         tag: v0.1.7
