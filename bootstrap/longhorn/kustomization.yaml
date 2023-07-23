@@ -1,5 +1,5 @@
 resources:
-- https://raw.githubusercontent.com/longhorn/longhorn/v1.4.1/deploy/longhorn.yaml
+- https://raw.githubusercontent.com/longhorn/longhorn/v1.5.0/deploy/longhorn.yaml
 - ingress.yaml
 
 patches:
