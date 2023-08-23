@@ -6,9 +6,6 @@ metadata:
 spec:
   ipAddressPools:
   - general-lb
-  nodeSelectors:
-  - matchLabels:
-      entity: didactiklabs
 ---
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
