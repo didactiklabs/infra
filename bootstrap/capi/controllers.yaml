@@ -50,10 +50,12 @@ stringData:
 apiVersion: operator.cluster.x-k8s.io/v1alpha1
 kind: ControlPlaneProvider
 metadata:
- name: kubeadm
+ name: kamaji
  namespace: capi-kubeadm-control-plane-system
 spec:
-  version: v1.4.2
+  version: v0.3.0
+  fetchConfig:
+    url: "https://github.com/clastix/cluster-api-control-plane-provider-kamaji/releases/v0.3.0/control-plane-components.yaml"
   secretName: capi-vars
 ---
 apiVersion: operator.cluster.x-k8s.io/v1alpha1
