@@ -24,7 +24,18 @@ spec:
         kind: HelmRepository
         name: kamaji
   interval: 10m
-  values:
+  valuesFrom:
+  - kind: ConfigMap
+    name: kamaji-values
+    valuesKey: values.yaml
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kamaji-values
+  namespace: flux-system
+data:
+  values.yaml: |
     etcd:
       deploy: false
     datastore:
