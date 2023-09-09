@@ -24,3 +24,26 @@ spec:
         kind: HelmRepository
         name: kamaji
   interval: 10m
+  values:
+    etcd.deploy: false
+    datastore.driver: PostgreSQL
+    datastore.endpoints[0]: postgres.kamaji-system.svc:5432
+    datastore.basicAuth.usernameSecret.name: postgres
+    datastore.basicAuth.usernameSecret.namespace: kamaji-system
+    datastore.basicAuth.usernameSecret.keyPath: username
+    datastore.basicAuth.passwordSecret.name: postgres
+    datastore.basicAuth.passwordSecret.namespace: kamaji-system
+    datastore.basicAuth.passwordSecret.keyPath: password
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: kamaji-db
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./bootstrap/kamaji-db
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: infra
