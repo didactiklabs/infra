@@ -40,16 +40,26 @@ data:
       deploy: false
     datastore:
       driver: PostgreSQL
-      endpoints[0]: postgres.kamaji-system.svc:5432
+      endpoints[0]: postgres-rw.kamaji-system.svc:5432
       basicAuth:
         usernameSecret:
-          name: postgres
+          name: postgres-superuser
           namespace: kamaji-system
           keyPath: username
         passwordSecret:
-          name: postgres
+          name: postgres-superuser
           namespace: kamaji-system
           keyPath: password
+      tlsConfig:
+        certificateAuthority:
+          certificate:
+            name: postgres-ca
+            namespace: kamaji-system
+            keyPath: ca.crt
+          privateKey:
+            name: postgres-ca
+            namespace: kamaji-system
+            keyPath: ca.key
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization

@@ -1,5 +1,3 @@
 namespace: kamaji-system
 resources:
-- db-pvc.yaml
-- db-deploy.yaml
-- db-svc.yaml
+- pg-cluster.yaml
