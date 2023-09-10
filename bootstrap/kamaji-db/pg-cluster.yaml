@@ -23,16 +23,16 @@ spec:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: postgres-client
+  name: kamaji-client
   labels:
     cnpg.io/reload: ""
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: postgres-client
+  name: kamaji-client
 spec:
-  secretName: postgres-client
+  secretName: kamaji-client
   usages:
     - client auth
   commonName: streaming_replica
