@@ -41,7 +41,7 @@ data:
     datastore:
       nameOverride: postgres
       driver: PostgreSQL
-      endpoints[0]: postgres-rw.kamaji-system.svc:5432
+      endpoints: ["postgres-rw.kamaji-system.svc:5432"]
       basicAuth:
         usernameSecret:
           name: postgres-superuser
