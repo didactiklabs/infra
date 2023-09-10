@@ -39,7 +39,6 @@ data:
     etcd:
       deploy: false
     datastore:
-      nameOverride: postgres
       driver: PostgreSQL
       endpoints: ["postgres-rw.kamaji-system.svc:5432"]
       basicAuth:
