@@ -2,10 +2,13 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: postgres
-  namespace: kamaji-system
 spec:
+  description: PostgreSQL cluster used by Kamaji along with kine
   instances: 3
-  primaryUpdateStrategy: unsupervised
   imageName: ghcr.io/cloudnative-pg/postgresql:14.9-8
+  primaryUpdateStrategy: unsupervised
+  postgresql:
+    pg_hba:
+      - hostssl app all all cert  # makes authentication entirely based on certificates
   storage:
     size: 20Gi

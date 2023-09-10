@@ -39,6 +39,7 @@ data:
     etcd:
       deploy: false
     datastore:
+      nameOverride: postgres
       driver: PostgreSQL
       endpoints[0]: postgres-rw.kamaji-system.svc:5432
       basicAuth:
@@ -60,6 +61,15 @@ data:
             name: postgres-ca
             namespace: kamaji-system
             keyPath: ca.key
+        clientCertificate:
+          certificate:
+            name: postgres-default-root-cert
+            namespace: kamaji-system
+            keyPath: tls.crt
+          privateKey:
+            name: postgres-default-root-cert
+            namespace: kamaji-system
+            keyPath: tls.key
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
