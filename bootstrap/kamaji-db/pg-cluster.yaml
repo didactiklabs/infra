@@ -7,8 +7,36 @@ spec:
   instances: 3
   imageName: ghcr.io/cloudnative-pg/postgresql:14.9-8
   primaryUpdateStrategy: unsupervised
-  postgresql:
-    pg_hba:
-      - hostssl app all all cert  # makes authentication entirely based on certificates
+  certificates:
+    clientCASecret: kamaji-client
+    replicationTLSSecret: kamaji-client
   storage:
     size: 20Gi
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: kamaji-pg-self
+spec:
+  selfSigned: {}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-client
+  labels:
+    cnpg.io/reload: ""
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: postgres-client
+spec:
+  secretName: postgres-client
+  usages:
+    - client auth
+  commonName: streaming_replica
+  issuerRef:
+    name: kamaji-pg-self
+    kind: Issuer
+    group: cert-manager.io

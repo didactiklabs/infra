@@ -62,11 +62,11 @@ data:
             keyPath: ca.key
         clientCertificate:
           certificate:
-            name: postgres-default-root-cert
+            name: postgres-client
             namespace: kamaji-system
             keyPath: tls.crt
           privateKey:
-            name: postgres-default-root-cert
+            name: postgres-client
             namespace: kamaji-system
             keyPath: tls.key
 ---
