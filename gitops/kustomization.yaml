@@ -1,5 +1,6 @@
 resources:
 - cluster-api.yaml
+- cloudnative-pg.yaml
 - kamaji.yaml
 - metallb.yaml
 - kubevirt.yaml
