@@ -38,7 +38,7 @@ spec:
   secretName: capi-vars
   manager:
     metrics:
-      bindAddress: 0.0.0.0
+      bindAddress: 0.0.0.0:8080
 ---
 apiVersion: v1
 kind: Secret
