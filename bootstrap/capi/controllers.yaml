@@ -36,6 +36,9 @@ metadata:
 spec:
   version: v1.4.2
   secretName: capi-vars
+  manager:
+    metrics:
+      bindAddress: 0.0.0.0
 ---
 apiVersion: v1
 kind: Secret
